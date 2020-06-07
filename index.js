@@ -76,7 +76,7 @@ app.get('/v2/mandalins', (req, res, next) => {
 
 function isValidMandalin(mandalin) {
   return mandalin.name && mandalin.name.toString().trim() !== '' && mandalin.name.toString().trim().length <= 50 &&
-    mandalin.content && mandalin.content.toString().trim() !== '' && mandalin.content.toString().trim().length <= 140;
+    mandalin.content && mandalin.content.toString().trim() !== '' && mandalin.content.toString().trim().length <= 300;
 }
 
 app.use(rateLimit({
@@ -100,7 +100,7 @@ const createMandalin = (req, res, next) => {
   } else {
     res.status(422);
     res.json({
-      message: 'Hey! Name and Content are required! Name cannot be longer than 50 characters. Content cannot be longer than 140 characters.'
+      message: 'Ne çok uzun olmalı yaşadıkların ne çok kısa...'
     });
   }
 };
