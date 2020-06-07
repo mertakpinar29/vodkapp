@@ -3,8 +3,15 @@ const cors = require('cors');
 const monk = require('monk');
 const Filter = require('bad-words');
 const rateLimit = require('express-rate-limit');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: true
+ }));
+ 
+ app.use(bodyParser.json());
 
 app.use(express.static('client'));
 
