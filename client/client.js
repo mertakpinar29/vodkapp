@@ -5,7 +5,7 @@ const errorElement = document.querySelector('.error-message');
 const loadingElement = document.querySelector('.loading');
 const mandalinsElement = document.querySelector('.mandalins');
 const loadMoreElement = document.querySelector('#loadMore');
-const API_URL = window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/v2/mandalins' : 'https://mandalinner.herokuapp.com/v2/mandalins';
+const API_URL = window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/v2/mandalins' : 'https://vodkapp.herokuapp.com/v2/mandalins';
 
 let skip = 0;
 let limit = 5;
@@ -67,7 +67,7 @@ form.addEventListener('submit', (event) => {
       loadingElement.style.display = 'none';
     });
   } else {
-    errorElement.textContent = 'Name and content are required!';
+    errorElement.textContent = 'Boşlukları doldur dicka!';
     errorElement.style.display = '';
   }
 });
@@ -91,10 +91,10 @@ function listAllMandalins(reset = true) {
         const div = document.createElement('div');
 
         const header = document.createElement('h3');
-        header.textContent = mew.name;
+        header.textContent = mandalin.name;
 
         const contents = document.createElement('p');
-        contents.textContent = mew.content;
+        contents.textContent = mandalin.content;
 
         const date = document.createElement('small');
         date.textContent = new Date(mandalin.created);

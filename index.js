@@ -6,7 +6,9 @@ const rateLimit = require('express-rate-limit');
 
 const app = express();
 
-const URI = "mongodb+srv://mandalinvodka:mandalinvodka@mandalinner-74hl2.mongodb.net/mandalins?retryWrites=true&w=majority";
+app.use(express.static('client'));
+
+const URI = "mongodb://mandalinvodka:mandalinvodka1@ds233238.mlab.com:33238/heroku_vrx1472g";
 const db = monk(URI);
 const mandalins = db.get('mandalins');
 const filter = new Filter();
@@ -23,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/mandalins', (req, res, next) => {
-  mews
+  mandalins
     .find()
     .then(mandalins => {
       res.json(mandalins);
@@ -41,9 +43,9 @@ app.get('/v2/mandalins', (req, res, next) => {
   limit = Math.min(50, Math.max(1, limit));
 
   Promise.all([
-    mews
+    mandalins
       .count(),
-    mews
+    mandalins
       .find({}, {
         skip,
         limit,
