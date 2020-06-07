@@ -106,7 +106,7 @@ const createMandalin = (req, res, next) => {
 };
 
 app.post('/mandalins', createMandalin);
-app.post('/v2/mandalin', createMandalin);
+app.post('/v2/mandalins', createMandalin);
 
 app.use((error, req, res, next) => {
   res.status(500);
